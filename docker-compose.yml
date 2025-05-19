@@ -1,0 +1,60 @@
+version: '3'
+services:
+  api:
+      container_name: API
+      build:
+        context: api
+        dockerfile: DockerfileAPI
+      ports:
+        - 8888:8888
+      volumes:
+        - ./api:/api
+      command: 'composer startup'
+      networks:
+        - rede
+      depends_on:
+        - banco
+  banco:
+    image: mysql:5.7
+    container_name: base
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    ports:
+      - 3306:3306
+    networks:
+      - rede
+    volumes:
+      - ./db:/var/lib/mysql    
+  front:
+    container_name: front
+    build:
+      context: front
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./front:/app
+    working_dir: /app
+    command: npm run dev
+    networks:
+      - rede
+    depends_on:
+      - api
+  worker:
+    container_name: worker
+    build:
+        context: api
+        dockerfile: DockerfileAPI
+    volumes:
+        - ./api:/api
+    command: 'composer worker'
+    networks:
+      - rede
+    depends_on:
+      - api
+networks:
+  rede:
+    driver: bridge
