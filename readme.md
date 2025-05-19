@@ -35,6 +35,5 @@ Este projeto é uma aplicação completa composta por uma API em Laravel e um fr
 
    ```shell
    docker compose up
-
-   Aguarde ate finalizar o proceso de instalação (composer, npm, migrations, seeders)
    ```
+   Aguarde ate finalizar o proceso de instalação (composer, npm, migrations, seeders)
