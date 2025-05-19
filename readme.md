@@ -32,7 +32,6 @@ cd sellsys
 
 2. Ative os containers via docker-compose
 
-```bash
 docker compose up
 
 Aguarde ate finalizar o proceso de instalação (composer, npm, migrations, seeders)
