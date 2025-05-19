@@ -27,8 +27,8 @@ Este projeto é uma aplicação completa composta por uma API em Laravel e um fr
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/andersoncoimbra/sellsys
+cd sellsys
 
 2. Ative os containers via docker-compose
    ```shell
